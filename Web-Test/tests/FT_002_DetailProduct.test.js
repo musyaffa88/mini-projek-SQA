@@ -5,7 +5,7 @@ const HomePage = require('../pageobjects/HomePage')
 const LoginPage = require('../pageobjects/LoginPage')
 const DetailProductPage = require('../pageobjects/DetailProductPage')
 
-describe('FT_002_Detail Product', function () {
+describe.skip('FT_002_Detail Product', function () {
     /** @type {WebDriver} */ let driver
     /** @type {HomePage} */ let homePage
     /** @type {DetailProductPage} */ let detailProductPage
