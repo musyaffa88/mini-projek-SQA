@@ -1,5 +1,5 @@
-const { By} = require('selenium-webdriver')
-const {Select} = require('selenium-webdriver')
+const { By, WebElement} = require('selenium-webdriver')
+const { Select } = require('selenium-webdriver')
 const Page = require('./Page')
 
 class CheckOutShippingPage extends Page {
@@ -18,11 +18,11 @@ class CheckOutShippingPage extends Page {
     regionIdField = By.name('region_id')
     regionField = By.name('region')
     postCodeField = By.name('postcode')
-    countryField = By.name('country_id')
+    countryField = By.css('select[name="country_id"]')
     phoneNumberField = By.name('telephone')
-    fixedShippingRB = By.name('ko_unique_1')
+    fixedShippingRB = By.css('input[value="flatrate_flatrate"]')
     tableRateRB = By.name('ko_unique_2')
-    nextButton = By.className('button action continue primary')
+    nextButton = By.css('.button.action.continue.primary')
 
 
     async openPage() {
@@ -57,16 +57,13 @@ class CheckOutShippingPage extends Page {
         await this.driver.findElement(this.cityField).sendKeys(city)
         await this.driver.findElement(this.postCodeField).sendKeys(postCode)
         await this.driver.findElement(this.phoneNumberField).sendKeys(phoneNumber)
+        await this.driver.findElement(this.countryField).sendKeys(country)
+        await this.driver.sleep(5000)
+        await this.driver.findElement(this.regionField).sendKeys(region)
+        await this.driver.sleep(5000)
         await this.driver.findElement(this.fixedShippingRB).click()
-        await this.driver.sleep(10000)
-        const Region = await this.driver.findElement(this.regionField)
-        const selectRegion = new Select(Region)
-        await selectRegion.selectByVisibleText(country)
-        const Country = await this.driver.findElement(this.countryField)
-        const selectCountry = new Select(Country)
-        await selectCountry.selectByVisibleText(country)
-        await this.driver.sleep(2000)
-        await this.driver.findElement(this.loginButton).click()
+        await this.driver.sleep(5000)
+        await this.driver.findElement(this.nextButton).click()
     }
 
 }

@@ -25,13 +25,12 @@ class CartPage extends Page {
 	}
 
     async openCart(){
-        // const addCart = await this.driver.findElement(this.addToCartBtn)
-        // await this.driver.wait(until.elementIsEnabled(addCart), 2000)
+        // const alert = await this.driver.findElement(this.addMesn)
+        // await this.driver.wait(until.elementLocated(alert), 2000)
         // const counterQty = await this.driver.findElement(this.counterQty)
         // await this.driver.wait(until.elementIsVisible(this.counterQty), 2000)
-        await this.driver.sleep(8000)
+        await this.driver.sleep(5000)
         await this.driver.findElement(this.cartBtn).click()
-        await this.driver.sleep(2000)
     }
 
     async getSumItems(){

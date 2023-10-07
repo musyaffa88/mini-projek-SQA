@@ -9,14 +9,22 @@ class DetailProductPage extends Page {
     productTitleEl = By.className('page-title')
     productPriceEl = By.className('price')
     productEl = By.className('product-item')
+    sizeXS = By.id('option-label-size-143-item-166')
+    sizeS = By.id('option-label-size-143-item-167')
     sizeM = By.id('option-label-size-143-item-168')
     sizeL = By.id('option-label-size-143-item-169')
+    sizeXL = By.id('option-label-size-143-item-170')
     colorBlue = By.id('option-label-color-93-item-50')
-    // sizeMes = By.css('.swatch-attribute.size')
-    // ColorMes = By.className('swatch-attribute-selected-option')
+    colorOrange = By.id('option-label-color-93-item-56')
+    colorPurple = By.id('option-label-color-93-item-57')
     qtyProduct = By.id('qty')
     addToCartBtn = By.id('product-addtocart-button')
-    addMes = By.className('page messages')
+    addMes = By.css('.message-success.succes.message')
+    sizeMes = By.css('.swatch-opt .swatch-attribute.size .swatch-attribute-selected-option')
+    colorMes = By.css('.swatch-opt .swatch-attribute.color .swatch-attribute-selected-option')
+    sizeErr = By.id('super_attribute[143]-error')
+    colorErr = By.id('super_attribute[93]-error')
+    qtyErr = By.id('qty-error')
 
     async openPage() {
 		await this.openUrl('/radiant-tee.html')
@@ -52,19 +60,81 @@ class DetailProductPage extends Page {
         await this.driver.findElement(this.addToCartBtn).click()
     }
 
+    async addCart(){
+        await this.driver.findElement(this.addToCartBtn).click()
+    }
+
+    async choseSizeXS () {
+        await this.driver.findElement(this.sizeXS).click()
+    }
+
+    async choseSizeS () {
+        await this.driver.findElement(this.sizeS).click()
+    }
+
+    async choseSizeM () {
+        await this.driver.findElement(this.sizeM).click()
+    }
+
+    async choseSizeL () {
+        await this.driver.findElement(this.sizeL).click()
+    }
+
+    async choseSizeXL () {
+        await this.driver.findElement(this.sizeXL).click()
+    }
+    
+    async choseColorBlue () {
+        await this.driver.findElement(this.colorBlue).click()
+    }
+
+    async choseColorOrange () {
+        await this.driver.findElement(this.colorOrange).click()
+    }
+
+    async choseColorPurple () {
+        await this.driver.findElement(this.colorPurple).click()
+    }
+
+    async editQty (qty) {
+        await this.driver.findElement(this.qtyProduct).clear()
+        await this.driver.findElement(this.qtyProduct).sendKeys(qty)
+    }
+
     async getQtyProduct () {
         return await this.driver.findElement(this.qtyProduct).getAttribute('value')
     }
 
+
     async getAddMessage(){
-        const addMes = await this.driver.findElement(this.addMes)
-        await this.driver.wait(until.elementIsVisible(addMes), 2000)
+        await this.driver.sleep(5000)
         return await this.driver.findElement(this.addMes).getText()
     }
-    // async getUrl() {
-    //     return await this.driver.getCurrentUrl()
-    // }
 
+    async getSizeMessage() {
+        await this.driver.sleep(1000)
+        return await this.driver.findElement(this.sizeMes).getText()
+    }
+
+    async getColorMessage() {
+        await this.driver.sleep(1000)
+        return await this.driver.findElement(this.colorMes).getText()
+    }
+
+    async getSizeError() {
+        await this.driver.sleep(1000)
+        return await this.driver.findElement(this.sizeErr).getText()
+    }
+
+    async getColorError() {
+        await this.driver.sleep(1000)
+        return await this.driver.findElement(this.colorErr).getText()
+    }
+
+    async getQtyError() {
+        await this.driver.sleep(1000)
+        return await this.driver.findElement(this.qtyErr).getText()
+    }
 }
 
 module.exports = DetailProductPage

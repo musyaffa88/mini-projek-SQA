@@ -9,17 +9,28 @@ class HomePage extends Page {
     welcomeUserEl = By.className('logged-in')
     searcField = By.id('search')
     productEl = By.className('product-item-info')
+    productNthChild = By.css('.product-items.widget-product-grid .product-item:nth-child(3)')
+    sizeNthChild = By.css('.swatch-opt-694 .swatch-attribute.size .swatch-attribute-options.clearfix .option-label-size-143-item-168')
     sizeM = By.id('option-label-size-143-item-168')
     sizeL = By.id('option-label-size-143-item-169')
+    colorNthChild = By.css('.swatch-opt-694 .swatch-attribute.color .swatch-attribute-options.clearfix .option-label-color-93-item-52')
     colorBlue = By.id('option-label-color-93-item-50')
+    logoEl = By.className('logo')
+    // logOutEl = By.css('button.action.switch')
 
     async openPage() {
 		await this.openUrl('/')
 	}
 
     async getWelcomeUser() {
-        await this.driver.sleep(2000)
+        await this.driver.sleep(5000)
         return await this.driver.findElement(this.welcomeUserEl).getText()
+    }
+
+    async addToCart() {
+        // await this.driver.findElement(this.productNthChild).click()
+        await this.driver.findElement(this.sizeNthChild).click()
+        await this.driver.findElement(this.colorNthChild).click()
     }
 
     async openDetailProduct(){
@@ -30,8 +41,13 @@ class HomePage extends Page {
     async openCart(){
         await this.driver.findElement(this.cartBtn).click()
     }
-    async getUrl() {
-        return await this.driver.getCurrentUrl()
+
+    async backHome() {
+        await this.driver.findElement(this.logoEl).click()
+    }
+
+    async logOut () {
+
     }
 
 }
