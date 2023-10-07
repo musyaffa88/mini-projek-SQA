@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test": "mocha --no-timeouts tests/**.test.js"
+  },
+  "dependencies": {
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "webdriverio": "^8.16.22"
+  }
+}
