@@ -9,6 +9,8 @@ class PaymentPage extends Page {
     checkBoxEl = By.id('billing-addres-same-as-shipping-checkmo')
     placeOrderBtn = By.className('action primary checkout')
     discountCodeSpan = By.id('block-discount-heading')
+    couponField = By.id('coupon_code')
+    applyDiscount = By.className('action apply primar')
     subTotalEl = By.css('.totals.sub .amount .price')
     shippingPriceEl = By.css('.totals.shipping.excl .amount .price')
     shippingNameEl = By.css('.totals.shipping.excl .mark .value')

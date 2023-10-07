@@ -19,7 +19,7 @@ class DetailProductPage extends Page {
     colorPurple = By.id('option-label-color-93-item-57')
     qtyProduct = By.id('qty')
     addToCartBtn = By.id('product-addtocart-button')
-    addMes = By.css('.message-success.succes.message')
+    addMes = By.css('div.page.messages div[role="alert"]')
     sizeMes = By.css('.swatch-opt .swatch-attribute.size .swatch-attribute-selected-option')
     colorMes = By.css('.swatch-opt .swatch-attribute.color .swatch-attribute-selected-option')
     sizeErr = By.id('super_attribute[143]-error')
@@ -57,6 +57,7 @@ class DetailProductPage extends Page {
         await this.driver.findElement(this.colorBlue).click()
         await this.driver.findElement(this.qtyProduct).clear()
         await this.driver.findElement(this.qtyProduct).sendKeys(qty)
+        await this.driver.sleep(2000)
         await this.driver.findElement(this.addToCartBtn).click()
     }
 
@@ -95,7 +96,10 @@ class DetailProductPage extends Page {
     async choseColorPurple () {
         await this.driver.findElement(this.colorPurple).click()
     }
-
+    /**
+	 * 
+	 * @param {number} qty
+	 */
     async editQty (qty) {
         await this.driver.findElement(this.qtyProduct).clear()
         await this.driver.findElement(this.qtyProduct).sendKeys(qty)

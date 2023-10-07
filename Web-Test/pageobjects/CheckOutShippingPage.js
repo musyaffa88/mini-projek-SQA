@@ -21,8 +21,9 @@ class CheckOutShippingPage extends Page {
     countryField = By.css('select[name="country_id"]')
     phoneNumberField = By.name('telephone')
     fixedShippingRB = By.css('input[value="flatrate_flatrate"]')
-    tableRateRB = By.name('ko_unique_2')
+    tableRateRB = By.css('input[value="tablerate_bestway"]')
     nextButton = By.css('.button.action.continue.primary')
+    
 
 
     async openPage() {
@@ -66,6 +67,15 @@ class CheckOutShippingPage extends Page {
         await this.driver.findElement(this.nextButton).click()
     }
 
+    async getCountry () {
+        return await this.driver.findElement(this.countryField).getAttribute('value')
+    }
+    async getRegion () {
+        return await this.driver.findElement(this.regionField).getAttribute('value')
+    }
+    async getPostCode () {
+        return await this.driver.findElement(this.postCodeField).getAttribute('value')
+    }
 }
 
 module.exports = CheckOutShippingPage

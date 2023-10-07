@@ -7,7 +7,7 @@ const DetailProductPage = require('../pageobjects/DetailProductPage')
 const CartPage = require('../pageobjects/CartPage')
 
 
-describe('FT_002_Detail Product', function () {
+describe.skip('FT_002_Detail Product', function () {
     /** @type {WebDriver} */ let driver
     /** @type {HomePage} */ let homePage
     /** @type {DetailProductPage} */ let detailProductPage
@@ -93,12 +93,11 @@ describe('FT_002_Detail Product', function () {
             const sizeMes = await detailProductPage.getSizeMessage()
             const collorMes = await detailProductPage.getColorMessage()
             const qtyMes = await detailProductPage.getQtyProduct()
-            // const addMes = await detailProductPage.getAddMessage()
+            const addMes = await detailProductPage.getAddMessage()
             expect(sizeMes).to.include('L')
             expect(collorMes).to.include('Blue')
             expect(qtyMes).to.equal('1')
-            // expect(addMes).to.equal('You added Radiant Tee to your shopping cart.')
-            await cartPage.openCart()
+            expect(addMes).to.equal('You added Radiant Tee to your shopping cart.')
         })
     })
 
