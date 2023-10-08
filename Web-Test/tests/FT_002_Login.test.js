@@ -4,7 +4,7 @@ const setupDriver = require('../utils/setupDriver')
 const HomePage = require('../pageobjects/HomePage')
 const LoginPage = require('../pageobjects/LoginPage')
 
-describe.skip('FT_001_Login', function () {
+describe.skip('FT_002_Login', function () {
     /** @type {WebDriver} */ let driver
     /** @type {HomePage} */ let homePage
     /** @type {LoginPage} */ let loginPage

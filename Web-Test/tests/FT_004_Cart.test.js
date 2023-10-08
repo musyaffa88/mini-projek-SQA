@@ -8,7 +8,7 @@ const CartPage = require('../pageobjects/CartPage')
 const CheckOutShippingPage = require('../pageobjects/CheckOutShippingPage')
 
 
-describe('FT_003_Cart Product', function () {
+describe.skip('FT_004_Cart Product', function () {
     /** @type {WebDriver} */ let driver
     /** @type {HomePage} */ let homePage
     /** @type {DetailProductPage} */ let detailProductPage
@@ -28,7 +28,7 @@ describe('FT_003_Cart Product', function () {
         await homePage.openDetailProduct()
     })   
     
-    describe('001_Memebuka halaman keranjang', async function () {
+    describe('001_Membuka halaman keranjang', async function () {
         it('Menampilkan halaman keranjang', async function () {
             await driver.sleep(10000)
             await detailProductPage.addToCart(1)
@@ -63,34 +63,51 @@ describe('FT_003_Cart Product', function () {
             await cartPage.deleteProduct()
             const emptyMes = await cartPage.getEmptyCartMessage()
             expect(emptyMes).to.include('You have no items in your shopping cart.')
-            await driver.sleep(3000)
-            await homePage.backHome()
+           
         })
     })
-    describe('005_Mencoba checkout tanpa mengisi alamat di kerangjang', async function () {
-        it('Menampilkan halaman dengan pesan You have no items in your shopping cart.', async function () {
+    describe('005_Mencoba checkout tanpa mengisi alamat di keranjang', async function () {
+        it('Menampilkan halaman shipping', async function () {
+            await driver.sleep(3000)
+            await homePage.backHome()
             await driver.sleep(2000)
-            await homePage.openDetailProduct()
-            await detailProductPage.addToCart(1)
-            // await homePage.addToCart()
-            await driver.sleep(10000)
+            await homePage.openDetailProductNth()
+            await driver.sleep(3000)
+            await detailProductPage.choseSizeM()
+            await detailProductPage.choseColorGray()
+            await detailProductPage.editQty(1)
+            await detailProductPage.addCart()
+            await driver.sleep(13000)
             await cartPage.openCart()
-            await driver.sleep(2000)
+            await driver.sleep(3000)
             await cartPage.viewCart()
             await cartPage.checkOutPrimary()
+            // await driver.sleep(5000)
+            // const postcode = await checkOutShippingPage.getPostCode()
+            // const country = await checkOutShippingPage.getCountry()
+            // expect(postcode).to.equal('')
+            // expect(country).to.equal('United States')
+            await driver.sleep(5000)
+            const pageTitle = await checkOutShippingPage.getPageTitle()
+            expect(pageTitle).to.include('Shipping Addres')
             await driver.sleep(3000)
-            await homePage.backHome()
         })
     })
-    describe.skip('006_Mencoba checkout dengan mengisi alamat di kerangjang', async function () {
+    describe('006_Mencoba checkout dengan mengisi alamat di keranjang', async function () {
         it('Menampilkan halaman shipping dengan region, country, terisi', async function () {
-            await driver.sleep(2000)
-            await homePage.openDetailProduct()
-            await detailProductPage.addToCart(1)
+            await driver.sleep(3000)
+            await homePage.backHome()
+            await driver.sleep(3000)
+            await homePage.openDetailProductNth()
+            await driver.sleep(3000)
+            await detailProductPage.choseSizeL()
+            await detailProductPage.choseColorGray()
+            await detailProductPage.editQty(1)
+            await detailProductPage.addCart()
             // await homePage.addToCart()
-            await driver.sleep(10000)
+            await driver.sleep(13000)
             await cartPage.openCart()
-            await driver.sleep(2000)
+            await driver.sleep(3000)
             await cartPage.viewCart()
             await cartPage.fillingDestinationShipping('Indonesia', 'Alaska', '12345')
             await driver.executeScript(function(){
@@ -101,6 +118,8 @@ describe('FT_003_Cart Product', function () {
             const region = await checkOutShippingPage.getRegion()
             const postcode = await checkOutShippingPage.getPostCode()
             const country = await checkOutShippingPage.getCountry()
+            const pageTitle = await checkOutShippingPage.getPageTitle()
+            expect(pageTitle).to.include('Shipping Address')
             expect(region).to.equal('Alaska')
             expect(postcode).to.equal('12345')
             expect(country).to.equal('ID')

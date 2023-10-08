@@ -15,6 +15,7 @@ class DetailProductPage extends Page {
     sizeL = By.id('option-label-size-143-item-169')
     sizeXL = By.id('option-label-size-143-item-170')
     colorBlue = By.id('option-label-color-93-item-50')
+    colorGray = By.id('option-label-color-93-item-52')
     colorOrange = By.id('option-label-color-93-item-56')
     colorPurple = By.id('option-label-color-93-item-57')
     qtyProduct = By.id('qty')
@@ -87,6 +88,10 @@ class DetailProductPage extends Page {
     
     async choseColorBlue () {
         await this.driver.findElement(this.colorBlue).click()
+    }
+
+    async choseColorGray () {
+        await this.driver.findElement(this.colorGray).click()
     }
 
     async choseColorOrange () {

@@ -10,6 +10,7 @@ class HomePage extends Page {
     searcField = By.id('search')
     productEl = By.className('product-item-info')
     productNthChild = By.css('.product-items.widget-product-grid .product-item:nth-child(3)')
+    productLastChild = By.css('.product-items.widget-product-grid .product-item:last-child')
     sizeNthChild = By.css('.swatch-opt-694 .swatch-attribute.size .swatch-attribute-options.clearfix .option-label-size-143-item-168')
     sizeM = By.id('option-label-size-143-item-168')
     sizeL = By.id('option-label-size-143-item-169')
@@ -37,7 +38,17 @@ class HomePage extends Page {
         await this.driver.sleep(2000)
         await this.driver.findElement(this.productEl).click()
     }
-    
+
+    async openDetailProductNth(){
+        await this.driver.sleep(2000)
+        await this.driver.findElement(this.productNthChild).click()
+    }
+
+    async openDetailProductLast(){
+        await this.driver.sleep(2000)
+        await this.driver.findElement(this.productLastChild).click()
+    }
+
     async openCart(){
         await this.driver.findElement(this.cartBtn).click()
     }

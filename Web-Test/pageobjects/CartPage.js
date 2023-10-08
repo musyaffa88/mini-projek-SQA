@@ -23,7 +23,7 @@ class CartPage extends Page {
     editProductEl = By.className('action action-edit')
     deleteProductEl = By.className('action action-delete')
     updateCartEl = By.id('product-updatecart-button')
-    checkOutBtn = By.css('.action.primary.checkout')
+    checkOutBtn = By.css('ul.checkout.methods.items.checkout-methods-items li.item:first-child button.action.primary.checkout')
     checkOutInfo = By.id('block-shipping')
     regionIdField = By.name('region_id')
     regionField = By.name('region')
@@ -55,7 +55,7 @@ class CartPage extends Page {
     async openCart(){
         // const addMes = await this.driver.findElement(this.addMes)
         // await this.driver.wait(until.elementLocated(addMes), 2000)
-        await this.driver.sleep(10000)
+        await this.driver.sleep(20000)
         await this.driver.findElement(this.cartBtn).click()
     }
 
@@ -124,7 +124,7 @@ class CartPage extends Page {
         await this.driver.findElement(this.postCodeField).sendKeys(postCode)
         await this.driver.sleep(5000)
         await this.driver.findElement(this.fixedShippingRB).click()
-        await this.driver.sleep(5000)
+        await this.driver.sleep(8000)
     }
     
     async applyDiscount(couponCode) {

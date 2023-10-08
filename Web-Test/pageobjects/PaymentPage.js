@@ -6,7 +6,9 @@ class PaymentPage extends Page {
 		super(driver)
 	}
 
-    checkBoxEl = By.id('billing-addres-same-as-shipping-checkmo')
+    pageTitle = By.className('items payment-methods')
+    checkBoxEl = By.id('billing-address-same-as-shipping-checkmo')
+    addressDetail = By.className('billing-address-details')
     placeOrderBtn = By.className('action primary checkout')
     discountCodeSpan = By.id('block-discount-heading')
     couponField = By.id('coupon_code')
@@ -23,6 +25,16 @@ class PaymentPage extends Page {
         // await this.driver.findElement(this.checkBoxEl).click()
         await this.driver.sleep(5000)
         await this.driver.findElement(this.placeOrderBtn).click()
+    }
+
+    async getPageTitle () {
+        await this.driver.sleep(5000)
+        return await this.driver.findElement(this.pageTitle).getText()
+    }
+
+    async getAddressDetail () {
+        await this.driver.sleep(5000)
+        return await this.driver.findElement(this.addressDetail).getText()
     }
 
     async getSubTotal () {

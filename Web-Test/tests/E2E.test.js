@@ -34,7 +34,7 @@ describe.skip('End to End Test', function () {
 
     describe('Mencoba Login', async function () {
         it('Berhasil Login dan menuju halaman home', async function () {
-            await loginPage.loginProcess('cobauser@coba.com','Cobauser12')
+            await loginPage.loginProcess('johnsmith@coba.com','Cobadaftar88')
             const welcomeMessage = await homePage.getWelcomeUser()
             expect(welcomeMessage).to.equal('Welcome, Coba User!')
         })
@@ -77,7 +77,10 @@ describe.skip('End to End Test', function () {
     describe('Mengisi data shipping dan menekan tombol next', async function () {
         it('Menuju halaman payment', async function () {
             await driver.sleep(8000)
-            await checkOutShippingPage.shippingProcess('Farissss', 'Woke', 'Pt Sejahtera', 'Sidomukti', 'Katarungan', 'RT/RW 02/02', 'Surabaya', 'Alaska', '12345', 'Indonesia', '8021820182')
+            await checkOutShippingPage.shippingProcess('Farissss', 'Woke', 'Pt Sejahtera', 'Sidomukti', 'Katarungan', 'RT/RW 02/02', 'Surabaya', '12345', 'Indonesia', '8021820182')
+            await checkOutShippingPage.regionInput('Alaska')
+            await checkOutShippingPage.fixedShipping()
+            await checkOutShippingPage.nextShipping()
         })
     })
 

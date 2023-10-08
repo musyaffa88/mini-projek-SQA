@@ -7,7 +7,7 @@ const DetailProductPage = require('../pageobjects/DetailProductPage')
 const CartPage = require('../pageobjects/CartPage')
 
 
-describe.skip('FT_002_Detail Product', function () {
+describe.skip('FT_003_Detail Product', function () {
     /** @type {WebDriver} */ let driver
     /** @type {HomePage} */ let homePage
     /** @type {DetailProductPage} */ let detailProductPage
