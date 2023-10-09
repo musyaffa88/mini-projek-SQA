@@ -8,8 +8,8 @@ const DRIVER_OPTIONS = {
         'platformName': 'Android',
         'appium:automationName': 'UIAutomator2',
         'appium:deviceName': 'emulator-5554',
-        'appium:app': path.join(process.cwd(), 'apk/learnBahasaIndonesia.apk'),
-        'appium:appActivity': 'com.bravolang.indonesian'
+        'appium:app': path.join(process.cwd(), 'apk/penjadwalan.apk'),
+        'appium:appActivity': 'com.splendapps.splendo.MainActivity'
     }
 }
 
