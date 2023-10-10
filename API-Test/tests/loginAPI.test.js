@@ -15,7 +15,6 @@ describe('Login API', async function login() {
         }
     
         const resLogin = await axios.post('https://fakestoreapi.com/auth/login', payload, headers)
-        // const resLogin = await request.post('/auth/login', payload, headers)
         expect(resLogin.status).equal(200)
         expect(resLogin.data.token).include('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9')
         expect(resLogin.data.token).to.exist

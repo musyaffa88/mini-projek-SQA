@@ -36,6 +36,13 @@ describe('Products API', async function () {
         expect(res.body[0].id).satisfy(id1 => id1 > res.body[1].id)
     })
 
+    it('Test Sort Result by Id = ASC', async function () {
+        const res = await request.get('/products?sort=asc')
+        expect(res.statusCode).equal(200)
+        expect(res.body).have.jsonSchema(productsSchema)
+        expect(res.body[0].id).satisfy(id1 => id1 < res.body[1].id)
+    })
+
     it('Test Get All Categories', async function () {
         const res = await request.get('/products/categories')
         expect(res.statusCode).equal(200)

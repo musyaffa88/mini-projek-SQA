@@ -20,7 +20,7 @@ export const options = {
 		protocolBased: {
 			exec: 'protocolBasedScript',
 			executor: 'constant-vus',
-			vus: 5,
+			vus: 10,
 			duration: '10s',
 		},
 		browserBased: {
