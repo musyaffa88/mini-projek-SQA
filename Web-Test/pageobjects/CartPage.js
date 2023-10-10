@@ -37,7 +37,7 @@ class CartPage extends Page {
     couponInvalidMes = By.css('div.page.messages div[role="alert"]')
     applyDiscount = By.className('action apply primar')
     addToCart = By.css('.products.list.items.product-items .item.product.product-item:nth-child(1) .action.tocart.primary')
-    addMes = By.css('div.page.messages  div[data-ui-id="checkout-cart-validationmessages-message-succes"]')
+    addMes = By.css('div.page.messages div[role="alert"]')
     updateMes = By.css('div.page.messages div[role="alert"]')
     updateShoppingCartEl = By.className('action update')
     // qtyCart = By.css('#shopping-cart-table .cart.item:nth-child(0) input[class="input-text qty"]')
@@ -54,8 +54,8 @@ class CartPage extends Page {
     // Pop Cart
     async openCart(){
         // const addMes = await this.driver.findElement(this.addMes)
-        // await this.driver.wait(until.elementLocated(addMes), 2000)
-        await this.driver.sleep(20000)
+        await this.driver.wait(until.elementLocated(this.addMes), 25000)
+        // await this.driver.sleep(20000)
         await this.driver.findElement(this.cartBtn).click()
     }
 
@@ -69,6 +69,10 @@ class CartPage extends Page {
 
     async getSumPrice(){
         return await this.driver.findElement(this.sumPricePop).getText()
+    }
+
+    async getProductName(){
+        return await this.driver.findElement(this.productNamePop).getText()
     }
 
     async checkOut () {

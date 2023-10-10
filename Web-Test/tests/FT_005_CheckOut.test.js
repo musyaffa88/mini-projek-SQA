@@ -221,6 +221,7 @@ describe.skip('FT_005_Checkout Page', function () {
             expect(addrresDetail).to.include('Kota Indah, Alaska 12345')
             expect(addrresDetail).to.include('Indonesia')
             expect(addrresDetail).to.include('8021820182')
+            await paymentPage.placeOrder()
         })
     })
 

@@ -83,10 +83,10 @@ describe('FT_001_Register', function () {
     })
     describe('010_Mendaftar dengan dengan mengisi semua data dengan benar', async function () {
         it('Pengguna akan masuk ke halaman My Account dan Halaman menampilkan pesan Thank you for registering with Main Website Store.', async function () {
-            await registerPage.registerProcess('John', 'Smith', 'johnsmith@coba.com', 'Cobadaftar88', 'Cobadaftar88')
+            await registerPage.registerProcess('Stone', 'Smith', 'stonesmith@coba.com', 'Cobadaftar88', 'Cobadaftar88')
             const successMes = await registerPage.getSuccessRegisterMessage()   
             const welcomeMessage = await homePage.getWelcomeUser()
-            expect(welcomeMessage).to.equal('Welcome, John Smith!')
+            expect(welcomeMessage).to.equal('Welcome, Stone Smith!')
             expect(successMes).to.equal('Thank you for registering with Main Website Store.')
         })
     })

@@ -2,9 +2,9 @@ module.exports = {
 	reporter: '@reportportal/agent-js-mocha',
 	'reporter-option': [
 		'endpoint=https://demo.reportportal.io/api/v1',
-		'apiKey=todos-api-test_ki3tBRnTQAar_JvMcwg2imE3GxS_1xcgC9fDOEDatE5BlM9WvF0cjwiHQ7FFWILv',
-		'launch=Todos Dummy JSON API Test',
+		'apiKey=miniproject_gGlAA3f1QgGBOc6xo47aMrWPn5wXijQFDTCB8NDB5iRmR1_P3FHpQcUOMWZZrSHd',
+		'launch=Mini Project SQA API Test',
 		'project=musyaffa88_personal',
-		'attributes=ApiTest;UnitTest;TodosDummyJSON',
+		'attributes=ApiTest;MiniProject;SQA',
 	],
 }
