@@ -1,4 +1,5 @@
 const soak_test = {
+	exec: 'protocolBasedScript',
 	executor: 'ramping-vus',
 	stages: [
 		{ duration: '5m', target: 100 },

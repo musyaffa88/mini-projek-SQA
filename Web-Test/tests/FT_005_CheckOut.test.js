@@ -9,7 +9,7 @@ const CheckOutShippingPage = require('../pageobjects/CheckOutShippingPage')
 const PaymentPage = require('../pageobjects/PaymentPage')
 const FinishOrderPage = require('../pageobjects/FinishOrderPage')
 
-describe.skip('FT_005_Checkout Page', function () {
+describe('FT_005_Checkout Page', function () {
     /** @type {WebDriver} */ let driver
     /** @type {HomePage} */ let homePage
     /** @type {DetailProductPage} */ let detailProductPage
@@ -30,8 +30,8 @@ describe.skip('FT_005_Checkout Page', function () {
         finishOrderPage = new FinishOrderPage(driver)
         await driver.manage().window().maximize()
         await homePage.openPage()
-        await homePage.openDetailProduct()
-        await driver.sleep(13000)
+        await detailProductPage.openDetailProduct()
+        // await driver.sleep(13000)
         await detailProductPage.addToCart(1)
         await cartPage.openCart()
         await driver.sleep(2000)
@@ -176,37 +176,30 @@ describe.skip('FT_005_Checkout Page', function () {
         })
     })
 
-    // describe('010_Melakukan checkout dengan hanya mengisi semua data yang required', async function () {
-    //     it('Berhasil melakukan checkout', async function () {
-    //         // await driver.sleep(8000)
-    //         await driver.executeScript(function(){
-    //             document.querySelector('html').scrollTo({ bottom: 500, behavior: 'smooth'})
-    //         })
-    //         await checkOutShippingPage.emailInput('cobashipping@coba.com')
-    //         await checkOutShippingPage.shippingProcess('Fariss', 'woke', '', 'Sidomukti', '', '', 'Kota Indah', '12345', 'Indonesia', '8021820182')
-    //         await checkOutShippingPage.regionInput('Alaska')
-    //         await checkOutShippingPage.fixedShipping()
-    //         await checkOutShippingPage.nextShipping()
-    //         const pageTitle = await paymentPage.getPageTitle()
-    //         const addrresDetail = await paymentPage.getAddressDetail()
-    //         expect(pageTitle).to.equal('Payment Method')
-    //         expect(addrresDetail).to.include('Fariss woke')
-    //         expect(addrresDetail).to.include('Sidomukti')
-    //         expect(addrresDetail).to.include('Kota Indah, Alaska 12345')
-    //         expect(addrresDetail).to.include('Indonesia')
-    //         expect(addrresDetail).to.include('8021820182')
-    //         await driver.sleep(3000)
-    //         await driver.executeScript("window.history.go(-1)")
-            
-    //     })
-    // })
-
-    describe('010_Melakukan checkout dengan mengisi semua data ', async function () {
+    describe('010_Melakukan checkout dengan hanya mengisi semua data yang required', async function () {
         it('Berhasil melakukan checkout', async function () {
-            await driver.executeScript(function(){
-                document.querySelector('html').scrollTo({ bottom: 500, behavior: 'smooth'})
-            })
-            await driver.sleep(3000)
+            // await driver.sleep(8000)
+            await checkOutShippingPage.emailInput('cobashipping@coba.com')
+            await checkOutShippingPage.shippingProcess('Fariss', 'woke', '', 'Sidomukti', '', '', 'Kota Indah', '12345', 'Indonesia', '8021820182')
+            await checkOutShippingPage.regionInput('Alaska')
+            await checkOutShippingPage.fixedShipping()
+            await checkOutShippingPage.nextShipping()
+            const pageTitle = await paymentPage.getPageTitle()
+            const addrresDetail = await paymentPage.getAddressDetail()
+            expect(pageTitle).to.include('Payment Method')
+            expect(addrresDetail).to.include('Fariss woke')
+            expect(addrresDetail).to.include('Sidomukti')
+            expect(addrresDetail).to.include('Kota Indah, Alaska 12345')
+            expect(addrresDetail).to.include('Indonesia')
+            expect(addrresDetail).to.include('8021820182')
+            await driver.sleep(5000)
+        })
+    })
+    
+    describe('011_Melakukan checkout dengan mengisi semua data ', async function () {
+        it('Berhasil melakukan checkout', async function () {
+            await paymentPage.backShipping()
+            await driver.sleep(5000)
             await checkOutShippingPage.emailInput('cobashipping@coba.com')
             await checkOutShippingPage.shippingProcess('Fariss', 'woke', 'Pt sejahtera', 'Sidomukti', 'Tanggul', 'RT/RW 31/92', 'Kota Indah', '12345', 'Indonesia', '8021820182')
             await checkOutShippingPage.regionInput('Alaska')
@@ -222,6 +215,9 @@ describe.skip('FT_005_Checkout Page', function () {
             expect(addrresDetail).to.include('Indonesia')
             expect(addrresDetail).to.include('8021820182')
             await paymentPage.placeOrder()
+            await driver.sleep(5000)
+            const succesMes = await finishOrderPage.getSuccesMessage()
+            expect(succesMes).to.equal('Thank you for your purchase!')
         })
     })
 

@@ -1,4 +1,5 @@
 const stress_test = {
+	exec: 'protocolBasedScript',
 	executor: 'ramping-vus',
 	stages: [
 		{ duration: '10m', target: 200 },

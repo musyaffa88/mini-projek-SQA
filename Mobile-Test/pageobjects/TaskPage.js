@@ -21,7 +21,7 @@ class TaskPage {
     get datePickerHeaderDate(){return this.driver.$('id=android:id/date_picker_header_date')}
     get datePickerNextMonth(){return this.driver.$('~Next month')}
     get datePickerPreviousMonth(){return this.driver.$('~Previous month')}
-    get choseDate(){return this.driver.$('~12 October 2023')} // tanggal pada bisa diganti sesuai keinginan (Harus Eng)
+    get choseDate(){return this.driver.$('~20 October 2023')} // tanggal pada bisa diganti sesuai keinginan (Harus Eng)
     get editTimeDueField(){return this.driver.$('id=com.splendapps.splendo:id/edtDueT')}
     get clearTimeDueField(){return this.driver.$('id=com.splendapps.splendo:id/btnClearT')}
     get timePickerHoursHeader(){return this.driver.$('id=android:id/hours')}

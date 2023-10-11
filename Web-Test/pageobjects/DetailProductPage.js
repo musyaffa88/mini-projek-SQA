@@ -38,6 +38,7 @@ class DetailProductPage extends Page {
 
     async openDetailProduct(){
         await this.driver.findElement(this.productEl).click()
+        await this.driver.wait(until.elementLocated(this.sizeL), 25000)
     }
     
     async getProductTitle(){
@@ -116,7 +117,7 @@ class DetailProductPage extends Page {
 
 
     async getAddMessage(){
-        await this.driver.sleep(5000)
+        await this.driver.wait(until.elementLocated(this.addMes), 25000)
         return await this.driver.findElement(this.addMes).getText()
     }
 

@@ -1,4 +1,4 @@
-const { By } = require('selenium-webdriver')
+const { By, until } = require('selenium-webdriver')
 const Page = require('./Page')
 
 class HomePage extends Page {
@@ -37,11 +37,13 @@ class HomePage extends Page {
     async openDetailProduct(){
         await this.driver.sleep(2000)
         await this.driver.findElement(this.productEl).click()
+        await this.driver.wait(until.elementLocated(this.sizeL), 25000)
     }
 
     async openDetailProductNth(){
         await this.driver.sleep(2000)
         await this.driver.findElement(this.productNthChild).click()
+        await this.driver.wait(until.elementLocated(this.sizeL), 25000)
     }
 
     async openDetailProductLast(){

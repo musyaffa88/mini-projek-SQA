@@ -1,4 +1,4 @@
-const { By } = require('selenium-webdriver')
+const { By, until } = require('selenium-webdriver')
 const Page = require('./Page')
 
 class PaymentPage extends Page {
@@ -20,6 +20,7 @@ class PaymentPage extends Page {
     itemsTotal = By.className('title')
     editShippingInformation = By.css('.shipping-information .ship-to .shipping-information-title .action.action-edit')
     editShippingMethod = By.css('.shipping-information .ship-via .shipping-information-title .action.action-edit')
+    updateAddressBtn = By.className('action action-update')
 
     async placeOrder () {
         // await this.driver.findElement(this.checkBoxEl).click()
@@ -27,6 +28,26 @@ class PaymentPage extends Page {
         await this.driver.findElement(this.placeOrderBtn).click()
     }
 
+    async checkBoxAddress () {
+        await this.driver.wait(until.elementLocated(this.checkBoxEl))
+        await this.driver.findElement(this.checkBoxEl).click()
+    }
+
+    async updateAddress () {
+        await this.driver.executeScript(function(){
+            document.querySelector('html').scrollTo(0, 1000)
+        })
+        await this.driver.sleep(5000)
+        await this.driver.findElement(this.updateAddress).click()
+    }
+
+    async backShipping () {
+        await this.driver.executeScript(function(){
+            document.querySelector('html').scrollTo(0, 1000)
+        })
+        await this.driver.sleep(5000)
+        await this.driver.findElement(this.editShippingInformation).click()
+    }
     async getPageTitle () {
         await this.driver.sleep(5000)
         return await this.driver.findElement(this.pageTitle).getText()

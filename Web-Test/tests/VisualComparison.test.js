@@ -3,7 +3,7 @@ const { expect } = require('chai')
 const setupDriver = require('../utils/setupDriver')
 const ComparisonImagePage = require('../pageobjects/ComparisonImagePage')
 
-describe.only('Visual Test', function () {
+describe('Visual Test', function () {
 	/** @type {WebDriver} */ let driver
 	/** @type {ComparisonImagePage} */ let comparisonImagePage
 

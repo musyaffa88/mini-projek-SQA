@@ -15,14 +15,38 @@ import gear_category_browser from './browser-test/07_gear_category_page.browser.
 import training_category_browser from './browser-test/08_training_category_page.browser.test.js'
 import sale_category_browser from './browser-test/09_sale_category_page.browser.test.js'
 
+import thresholds from './config/thresholds.js'
+
+import smoke_test from './config/smoke_test_scenario.js'
+import average_load_test from './config/average_load_test_scenario.js'
+import stress_test from './config/stress_test_scenario.js'
+import soak_test from './config/soak_test_scenario.js'
+import spike_test from './config/spike_test_scenario.js'
+import breakpoint_test from './config/breakpoint_test_scenario.js'
+
+import apiProduct from './api-test/groups/01_product_api.test.js'
+import apiCarts from './api-test/groups/02_cart_api.test.js'
+import apiUsers from './api-test/groups/03_user_api.test.js'
+
+const scenarioList = {
+	smoke: smoke_test,
+	average: average_load_test,
+	stress: stress_test,
+	soak: soak_test,
+	spike: spike_test,
+	breakpoint: breakpoint_test,
+}
+
 export const options = {
+	thresholds,
 	scenarios: {
-		protocolBased: {
-			exec: 'protocolBasedScript',
-			executor: 'constant-vus',
-			vus: 10,
-			duration: '10s',
-		},
+		protocolBased : scenarioList[__ENV.SCENARIO] || smoke_test,
+		// protocolBased: {
+		// 	exec: 'protocolBasedScript',
+		// 	executor: 'constant-vus',
+		// 	vus: 13,
+		// 	duration: '15s',
+		// },
 		browserBased: {
 			exec: 'browserBasedScript',
 			executor: 'shared-iterations',
@@ -32,14 +56,19 @@ export const options = {
 				}
 			}
 		}
-	},
-	thresholds : {
-		http_req_failed: ['rate<=0.1']
+		// apiBased : scenarioList[__ENV.SCENARIO] || smoke_test
+		// apiBased: {
+		// 	exec: 'protocolBasedScript',
+		// 	executor: 'constant-vus',
+		// 	vus: 3,
+		// 	duration: '10s',
+		// } 
 	}
 }
 
 export async function browserBasedScript () {
-	const page = browser.newPage()
+	const context = browser.newContext()
+	const page = context.newPage()
 
 	try {
 		await register_browser(page)
@@ -61,4 +90,11 @@ export function protocolBasedScript () {
 	login_protocol()
 	home_protocol()
 	detail_product_protocol()
+	// API
+	apiProduct()
+	apiCarts()
+	apiUsers()
 }
+
+// export function apiBasedScript () {
+// }

@@ -43,7 +43,7 @@ describe('Cart API', async function () {
         expect(res.body[0].id).satisfy(id1 => id1 < res.body[1].id)
     })
 
-    it('Test Get Carts in a Date Range startdate=2019-12-10 & enddate=2020-10-10 ', async function () {
+    it('Test Get Carts in a Date Range startdate=2019-12-10 & enddate=2020-10-10', async function () {
         const res = await request.get('/carts?startdate=2019-12-10&enddate=2020-10-10')
         expect(res.statusCode).equal(200)
         expect(res.body).have.jsonSchema(cartsSchema)

@@ -1,7 +1,8 @@
 const smoke_test = {
+	exec: 'protocolBasedScript',
 	executor: 'constant-vus',
-	duration: '10s',
-	vus: 1
+	duration: '20s',
+	vus: 8
 }
 
 export default smoke_test

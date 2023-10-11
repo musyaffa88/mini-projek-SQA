@@ -4,7 +4,7 @@ const HomePage = require('../pageobjects/HomePage')
 const AllPage = require('../pageobjects/AllPage')
 const TaskPage = require('../pageobjects/TaskPage')
 
-describe.only('End to End Test', function () {
+describe('End to End Test', function () {
 	/** @type {WebdriverIO.Browser} */ let driver
 	/** @type {AllPage} */ let allPage
 	/** @type {HomePage} */ let homePage

@@ -1,4 +1,4 @@
-const { By } = require('selenium-webdriver')
+const { By, until } = require('selenium-webdriver')
 const Page = require('./Page')
 
 class FinishOrderPage extends Page {
@@ -12,6 +12,7 @@ class FinishOrderPage extends Page {
     continueShoppingBtn = By.className('action priary continue')
 
     async getSuccesMessage () {
+        await this.driver.wait(until.elementLocated(this.succesMessageEl), 10000)
         return await this.driver.findElement(this.succesMessageEl).getText()
     }
 

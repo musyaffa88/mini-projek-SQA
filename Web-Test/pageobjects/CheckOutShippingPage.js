@@ -1,4 +1,4 @@
-const { By, WebElement} = require('selenium-webdriver')
+const { By, WebElement, until} = require('selenium-webdriver')
 const { Select } = require('selenium-webdriver')
 const Page = require('./Page')
 
@@ -45,11 +45,17 @@ class CheckOutShippingPage extends Page {
 	 */
 
     async getPageTitle () {
+        await this.driver.wait(until.elementLocated(this.pageTitle), 10000)
         return await this.driver.findElement(this.pageTitle).getText()
     }
 
     async emailInput (email) {
-        await this.driver.sleep(3000)
+        await this.driver.wait(until.elementLocated(this.emailField), 20000)
+        // const emailEl = await this.driver.findElement(this.emailField)
+        // await this.driver.wait(until.elementIsVisible(emailEl), 20000)
+        const emailEl = await this.driver.findElement(this.emailField)
+        await this.driver.wait(until.elementIsEnabled(emailEl), 20000)
+        await this.driver.sleep(5000)
         await this.driver.findElement(this.emailField).clear()
         await this.driver.findElement(this.emailField).sendKeys(email)
     }
@@ -70,6 +76,11 @@ class CheckOutShippingPage extends Page {
 	 */
     async shippingProcess(firstName, lastName, company, address, address1, address2, city, postCode, country, phoneNumber) {
         await this.driver.sleep(3000)
+        await this.driver.wait(until.elementLocated(this.firstNameField), 20000)
+        // const firstNameEl = await this.driver.findElement(this.firstNameField)
+        // await this.driver.wait(until.elementIsVisible(firstNameEl), 20000)
+        const firstNameEl = await this.driver.findElement(this.firstNameField)
+        await this.driver.wait(until.elementIsEnabled(firstNameEl), 20000)
         await this.driver.findElement(this.firstNameField).clear()
         await this.driver.findElement(this.firstNameField).sendKeys(firstName)
         await this.driver.findElement(this.lastNameField).clear()
@@ -90,8 +101,46 @@ class CheckOutShippingPage extends Page {
         await this.driver.findElement(this.phoneNumberField).sendKeys(phoneNumber)
         await this.driver.findElement(this.countryField).sendKeys(country)
         await this.driver.sleep(5000)
-
     }
+
+     /**
+	 * 
+	 * @param {string} firstName
+	 * @param {string} lastName
+	 * @param {string} company
+	 * @param {string} adress
+	 * @param {string} adress1
+	 * @param {string} adress2
+	 * @param {string} city
+	 * @param {string} postCode
+	 * @param {string} country
+	 * @param {string} phoneNumber
+     * 
+	 */
+    //  async updateShippingProcess(firstName, lastName, company, address, address1, address2, city, postCode, country, phoneNumber) {
+    //     await this.driver.sleep(3000)
+    //     // await this.driver.findElement(this.firstNameField).clear()
+    //     await this.driver.findElement(this.firstNameField).sendKeys(firstName)
+    //     // await this.driver.findElement(this.lastNameField).clear()
+    //     await this.driver.findElement(this.lastNameField).sendKeys(lastName)
+    //     // await this.driver.findElement(this.companyField).clear()
+    //     await this.driver.findElement(this.companyField).sendKeys(company)
+    //     // await this.driver.findElement(this.addressField).clear()
+    //     await this.driver.findElement(this.addressField).sendKeys(address)
+    //     // await this.driver.findElement(this.addressField1).clear()
+    //     await this.driver.findElement(this.addressField1).sendKeys(address1)
+    //     // await this.driver.findElement(this.addressField2).clear()
+    //     await this.driver.findElement(this.addressField2).sendKeys(address2)
+    //     // await this.driver.findElement(this.cityField).clear()
+    //     await this.driver.findElement(this.cityField).sendKeys(city)
+    //     // await this.driver.findElement(this.postCodeField).clear()
+    //     await this.driver.findElement(this.postCodeField).sendKeys(postCode)
+    //     // await this.driver.findElement(this.phoneNumberField).clear()
+    //     await this.driver.findElement(this.phoneNumberField).sendKeys(phoneNumber)
+    //     await this.driver.findElement(this.countryField).sendKeys(country)
+    //     await this.driver.sleep(5000)
+
+    // }
 
     /**
 	 * 

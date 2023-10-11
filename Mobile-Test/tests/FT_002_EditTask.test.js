@@ -4,7 +4,7 @@ const HomePage = require('../pageobjects/HomePage')
 const AllPage = require('../pageobjects/AllPage')
 const TaskPage = require('../pageobjects/TaskPage')
 
-describe('FT_002_Edit Task', function () {
+describe.only('FT_002_Edit Task', function () {
 	/** @type {WebdriverIO.Browser} */ let driver
 	/** @type {AllPage} */ let allPage
 	/** @type {HomePage} */ let homePage
@@ -52,7 +52,7 @@ describe('FT_002_Edit Task', function () {
             const nameTask = await homePage.getTaskName()
 			const dateTask = await homePage.getTaskDue()
 			expect(nameTask).to.equal('Sudah ada tanggal')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023')
             expect(mess).to.equal('Task Saved')
 		})
 	})
@@ -69,7 +69,7 @@ describe('FT_002_Edit Task', function () {
             const nameTask = await homePage.getTaskName()
 			const dateTask = await homePage.getTaskDue()
 			expect(nameTask).to.equal('Sudah ada tanggal dan jam')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023, 1:30 PM')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023, 1:30 PM')
             expect(mess).to.equal('Task Saved')
 		})
 	})
@@ -87,7 +87,7 @@ describe('FT_002_Edit Task', function () {
             const imageRepeat = await homePage.getRepeatImage()
             expect(mess).to.equal('Task Saved')
 			expect(nameTask).to.equal('Sudah ada Repeat Once a Day')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023, 1:30 PM')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023, 1:30 PM')
             expect(imageRepeat).to.be.true
             await homePage.openTask()
 		})
@@ -105,7 +105,7 @@ describe('FT_002_Edit Task', function () {
             const imageRepeat = await homePage.getRepeatImage()
             expect(mess).to.equal('Task Saved')
 			expect(nameTask).to.equal('Sudah ada Once a Day (Mon-Fry)')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023, 1:30 PM')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023, 1:30 PM')
             expect(imageRepeat).to.be.true
             await homePage.openTask()
 		})
@@ -123,7 +123,7 @@ describe('FT_002_Edit Task', function () {
             const imageRepeat = await homePage.getRepeatImage()
             expect(mess).to.equal('Task Saved')
 			expect(nameTask).to.equal('Sudah ada Repeat Once a Week')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023, 1:30 PM')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023, 1:30 PM')
             expect(imageRepeat).to.be.true
             await homePage.openTask()
 		})
@@ -141,7 +141,7 @@ describe('FT_002_Edit Task', function () {
             const imageRepeat = await homePage.getRepeatImage()
             expect(mess).to.equal('Task Saved')
             expect(nameTask).to.equal('Sudah ada Repeat Once a Month')
-            expect(dateTask).to.equal('Thu, Oct 12, 2023, 1:30 PM')
+            expect(dateTask).to.equal('Fri, Oct 20, 2023, 1:30 PM')
             expect(imageRepeat).to.be.true
             await homePage.openTask()
         })
@@ -159,7 +159,7 @@ describe('FT_002_Edit Task', function () {
             const imageRepeat = await homePage.getRepeatImage()
             expect(mess).to.equal('Task Saved')
 			expect(nameTask).to.equal('Sudah ada Repeat Once a Year')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023, 1:30 PM')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023, 1:30 PM')
             expect(imageRepeat).to.be.true
             await homePage.openTask()
 		})
@@ -179,7 +179,7 @@ describe('FT_002_Edit Task', function () {
 			const dateTask = await homePage.getTaskDue()
             const imageRepeat = await homePage.getRepeatImage()
 			expect(nameTask).to.equal('Sudah masuk Personal List')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023, 1:30 PM')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023, 1:30 PM')
             expect(imageRepeat).to.be.true
             await homePage.openTask()
 		})
@@ -199,7 +199,7 @@ describe('FT_002_Edit Task', function () {
 			const dateTask = await homePage.getTaskDue()
             const imageRepeat = await homePage.getRepeatImage()
 			expect(nameTask).to.equal('Sudah masuk Shopping List')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023, 1:30 PM')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023, 1:30 PM')
             expect(imageRepeat).to.be.true
             await homePage.openTask()
 		})
@@ -219,7 +219,7 @@ describe('FT_002_Edit Task', function () {
 			const dateTask = await homePage.getTaskDue()
             const imageRepeat = await homePage.getRepeatImage()
 			expect(nameTask).to.equal('Sudah masuk Wishlist')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023, 1:30 PM')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023, 1:30 PM')
             expect(imageRepeat).to.be.true
             await homePage.openTask()
 		})
@@ -239,7 +239,7 @@ describe('FT_002_Edit Task', function () {
 			const dateTask = await homePage.getTaskDue()
             const imageRepeat = await homePage.getRepeatImage()
 			expect(nameTask).to.equal('Sudah masuk Work List')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023, 1:30 PM')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023, 1:30 PM')
             expect(imageRepeat).to.be.true
             await homePage.openTask()
 		})
@@ -256,7 +256,7 @@ describe('FT_002_Edit Task', function () {
             const imageRepeat = await homePage.getRepeatImage()
             expect(mess).to.equal('Task Saved')
 			expect(nameTask).to.equal('Sudah menghapus jam')
-			expect(dateTask).to.equal('Thu, Oct 12, 2023')
+			expect(dateTask).to.equal('Fri, Oct 20, 2023')
             expect(imageRepeat).to.be.true
             await homePage.openTask()
 		})

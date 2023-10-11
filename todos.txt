@@ -1,0 +1,41 @@
+1. API Test (Report Portal)
+- Product
+- Cart 
+- User
+- Login  
+
+2. Web Test 
+- E2E diawali register 
+- E2E diawali login
+- Register 
+- Login  
+- Detail Produk 
+- Keranjang 
+- Checkout 
+- Visual Comparison
+
+3. Mobile Test 
+- E2E 
+- Add Todos 
+- Edit Todos 
+- Search 
+- List 
+
+4. Performance Test (K6 Grafana)
+a. Browser based 
+    - register
+    - login 
+    - home page 
+    - detail product page 
+    - women page 
+    - men page 
+    - gear page 
+    - training page
+    - sale page  
+b. Protocol Based
+    - register 
+    - login 
+    - homepage 
+    - detail product
+    - API test
+

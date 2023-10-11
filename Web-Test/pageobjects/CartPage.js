@@ -54,8 +54,8 @@ class CartPage extends Page {
     // Pop Cart
     async openCart(){
         // const addMes = await this.driver.findElement(this.addMes)
-        await this.driver.wait(until.elementLocated(this.addMes), 25000)
-        // await this.driver.sleep(20000)
+        await this.driver.wait(until.elementLocated(this.addMes), 300000)
+        await this.driver.sleep(2000)
         await this.driver.findElement(this.cartBtn).click()
     }
 
@@ -64,18 +64,22 @@ class CartPage extends Page {
     }
 
     async getSumItems(){
+        await this.driver.wait(until.elementLocated(this.sumItemsPop), 5000)
         return await this.driver.findElement(this.sumItemsPop).getText()
     }
 
     async getSumPrice(){
+        await this.driver.wait(until.elementLocated(this.sumPricePop), 5000)
         return await this.driver.findElement(this.sumPricePop).getText()
     }
 
     async getProductName(){
+        await this.driver.wait(until.elementLocated(this.productNamePop), 5000)
         return await this.driver.findElement(this.productNamePop).getText()
     }
 
     async checkOut () {
+        await this.driver.wait(until.elementLocated(this.productNamePop), 5000)
         await this.driver.findElement(this.checkOutBtnPop).click()
     }
 

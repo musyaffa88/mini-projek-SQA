@@ -17,7 +17,7 @@ class RegisterPage extends Page {
     passwordConfirmationErr = By.id('password-confirmation-error')
     registerButton = By.className('action submit primary')
     incorrectAccountMes = By.className('message-error error message')
-    successMes = By.css('div.page.messages div[role="alert"]')
+    messagges = By.css('div.page.messages div[role="alert"]')
 
 
     async openPage() {
@@ -77,7 +77,7 @@ class RegisterPage extends Page {
 
     async getSuccessRegisterMessage(){
         await this.driver.sleep(5000)
-        return await this.driver.findElement(this.successMes).getText()
+        return await this.driver.findElement(this.messagges).getText()
     }
 }
 

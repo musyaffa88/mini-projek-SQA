@@ -8,7 +8,7 @@ const CartPage = require('../pageobjects/CartPage')
 const CheckOutShippingPage = require('../pageobjects/CheckOutShippingPage')
 
 
-describe('FT_004_Cart Product', function () {
+describe.only('FT_004_Cart Product', function () {
     /** @type {WebDriver} */ let driver
     /** @type {HomePage} */ let homePage
     /** @type {DetailProductPage} */ let detailProductPage
@@ -30,10 +30,17 @@ describe('FT_004_Cart Product', function () {
     
     describe('001_Membuka halaman keranjang', async function () {
         it('Menampilkan halaman keranjang', async function () {
-            await driver.sleep(10000)
+            // await driver.sleep(10000)
             await detailProductPage.addToCart(1)
             // await driver.sleep(2000)
             await cartPage.openCart()
+            // await driver.sleep(3000)
+            const sumItems = await cartPage.getSumItems()
+            const sumPrice = await cartPage.getSumPrice()
+            const productName = await cartPage.getProductName()
+            expect(sumItems).to.include('1')
+            expect(sumPrice).to.include('22.00')
+            expect(productName).to.include('Radiant Tee')
             await driver.sleep(2000)
             await cartPage.viewCart()
         })

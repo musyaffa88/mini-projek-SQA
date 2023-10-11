@@ -34,9 +34,9 @@ describe('End to End Test melalui login', function () {
 
     describe('Mencoba Login', async function () {
         it('Berhasil Login dan menuju halaman home', async function () {
-            await loginPage.loginProcess('johnsmith@coba.com','Cobadaftar88')
+            await loginPage.loginProcess('mounthsmith@coba.com','Cobadaftar88')
             const welcomeMessage = await homePage.getWelcomeUser()
-            expect(welcomeMessage).to.equal('Welcome, John Smith!')
+            expect(welcomeMessage).to.equal('Welcome, Mounth Smith!')
         })
     })
 
@@ -49,16 +49,16 @@ describe('End to End Test melalui login', function () {
     })
 
     describe('Menambahkan produk ke keranjang', async function () {
-        it('Produk berhasil di tambahkan', async function () {
+        it('Produk berhasil di tambahkan muncul pesan "You added Radiant Tee to your shopping cart."', async function () {
             await detailProductPage.addToCart(1)
             const sizeMes = await detailProductPage.getSizeMessage()
             const collorMes = await detailProductPage.getColorMessage()
             const qtyMes = await detailProductPage.getQtyProduct()
             const addMes = await detailProductPage.getAddMessage()
+            expect(addMes).to.equal('You added Radiant Tee to your shopping cart.')
             expect(sizeMes).to.include('L')
             expect(collorMes).to.include('Blue')
             expect(qtyMes).to.equal('1')
-            expect(addMes).to.equal('You added Radiant Tee to your shopping cart.')
         })
     })
 
@@ -83,7 +83,7 @@ describe('End to End Test melalui login', function () {
     describe('Mengisi data shipping dan menekan tombol next', async function () {
         it('Menuju halaman payment', async function () {
             await driver.sleep(8000)
-            await checkOutShippingPage.shippingProcess('Jonh', 'Smith', 'Pt Sejahtera', 'Sidomukti', 'Katarungan', 'RT/RW 31/92', 'Kota Indah', '12345', 'Indonesia', '8021820182')
+            await checkOutShippingPage.shippingProcess('Mount', 'Smith', 'Pt Sejahtera', 'Sidomukti', 'Katarungan', 'RT/RW 31/92', 'Kota Indah', '12345', 'Indonesia', '8021820182')
             await checkOutShippingPage.regionInput('Alaska')
             await checkOutShippingPage.fixedShipping()
             await checkOutShippingPage.nextShipping()
@@ -91,7 +91,7 @@ describe('End to End Test melalui login', function () {
             const pageTitle = await paymentPage.getPageTitle()
             const addrresDetail = await paymentPage.getAddressDetail()
             expect(pageTitle).to.include('Payment Method')
-            expect(addrresDetail).to.include('Jonh Smith')
+            expect(addrresDetail).to.include('Mount Smith')
             expect(addrresDetail).to.include('Sidomukti, Katarungan, RT/RW 31/92')
             expect(addrresDetail).to.include('Kota Indah, Alaska 12345')
             expect(addrresDetail).to.include('Indonesia')
@@ -100,9 +100,12 @@ describe('End to End Test melalui login', function () {
     })
 
     describe('Mengkonfirmasi data bahwa data benar dan melakukan order', async function () {
-        it('Order berhasil dan menuju halaman succes order', async function () {
-            await driver.sleep(8000)
-            // await paymentPage.placeOrder()
+        it('Order berhasil dan menuju halaman success order', async function () {
+            await driver.sleep(5000)
+            await paymentPage.placeOrder()
+            await driver.sleep(5000)
+            const succesMes = await finishOrderPage.getSuccesMessage()
+            expect(succesMes).to.equal('Thank you for your purchase!')
         })
     })
 
