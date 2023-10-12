@@ -93,6 +93,7 @@ describe('FT_001_Register', function () {
     describe('011_Mendaftar dengan mengisi semua data dengan benar', async function () {
         it('Pengguna akan masuk ke halaman My Account dan Halaman menampilkan pesan Thank you for registering with Main Website Store.', async function () {
             await registerPage.registerProcess('Meal', 'Rice', 'mealrice@coba.com', 'Cobadaftar88', 'Cobadaftar88')
+            await driver.sleep(5000)
             const successMes = await registerPage.getSuccessRegisterMessage()   
             const welcomeMessage = await homePage.getWelcomeUser()
             expect(welcomeMessage).to.equal('Welcome, Meal Rice!')

@@ -35,7 +35,7 @@ describe('FT_003_Detail Product', function () {
     })
 
     describe('002_Menambah produk ke keranjang tanpa memilih ukuran, warna dan jumlah produk = 0', async function () {
-        it('Menampilkan pesan This is a required field. dan Please enter q quantity greater than 0.', async function () {
+        it('Menampilkan pesan This is a required field. dan Please enter a quantity greater than 0.', async function () {
             await detailProductPage.editQty(0)
             await detailProductPage.addCart()
             const sizeErr = await detailProductPage.getSizeError()

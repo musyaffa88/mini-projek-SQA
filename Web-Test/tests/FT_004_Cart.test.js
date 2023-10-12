@@ -8,7 +8,7 @@ const CartPage = require('../pageobjects/CartPage')
 const CheckOutShippingPage = require('../pageobjects/CheckOutShippingPage')
 
 
-describe.only('FT_004_Cart Product', function () {
+describe('FT_004_Cart Product', function () {
     /** @type {WebDriver} */ let driver
     /** @type {HomePage} */ let homePage
     /** @type {DetailProductPage} */ let detailProductPage

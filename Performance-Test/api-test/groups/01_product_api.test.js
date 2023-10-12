@@ -10,7 +10,7 @@ export default function productsAPI () {
         describe('Test Get All Products', function () {
             const res = http.get('https://fakestoreapi.com/products')
             check(res, {
-                'Status 200': (r) => r.status ===200
+                'Status 200': (r) => r.status === 200
             })
         })
     

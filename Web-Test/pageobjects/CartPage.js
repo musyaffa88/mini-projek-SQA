@@ -89,6 +89,10 @@ class CartPage extends Page {
     }
 
     async updateShoppingCart() {
+        await this.driver.executeScript(function(){
+            document.querySelector('html').scrollTo(0, 500)
+        })
+        await this.driver.sleep(2000)
         await this.driver.findElement(this.updateShoppingCartEl).click()
     }
 

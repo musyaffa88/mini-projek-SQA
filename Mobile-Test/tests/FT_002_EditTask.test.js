@@ -4,7 +4,7 @@ const HomePage = require('../pageobjects/HomePage')
 const AllPage = require('../pageobjects/AllPage')
 const TaskPage = require('../pageobjects/TaskPage')
 
-describe.only('FT_002_Edit Task', function () {
+describe('FT_002_Edit Task', function () {
 	/** @type {WebdriverIO.Browser} */ let driver
 	/** @type {AllPage} */ let allPage
 	/** @type {HomePage} */ let homePage

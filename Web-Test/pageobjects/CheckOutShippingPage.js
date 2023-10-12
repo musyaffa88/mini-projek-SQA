@@ -35,6 +35,8 @@ class CheckOutShippingPage extends Page {
     postCodeErr = By.name('shippingAddress.postcode')
     phoneNumberErr = By.name('shippingAddress.telephone')
 
+    fieldsetAddressEl = By.css('.fieldset.address')
+
     async openPage() {
 		await this.openUrl('/checkout/#shipping')
 	}
@@ -79,8 +81,8 @@ class CheckOutShippingPage extends Page {
         await this.driver.wait(until.elementLocated(this.firstNameField), 20000)
         // const firstNameEl = await this.driver.findElement(this.firstNameField)
         // await this.driver.wait(until.elementIsVisible(firstNameEl), 20000)
-        const firstNameEl = await this.driver.findElement(this.firstNameField)
-        await this.driver.wait(until.elementIsEnabled(firstNameEl), 20000)
+        // const firstNameEl = await this.driver.findElement(this.firstNameField)
+        // await this.driver.wait(until.elementIsEnabled(firstNameEl), 20000)
         await this.driver.findElement(this.firstNameField).clear()
         await this.driver.findElement(this.firstNameField).sendKeys(firstName)
         await this.driver.findElement(this.lastNameField).clear()
@@ -117,30 +119,32 @@ class CheckOutShippingPage extends Page {
 	 * @param {string} phoneNumber
      * 
 	 */
-    //  async updateShippingProcess(firstName, lastName, company, address, address1, address2, city, postCode, country, phoneNumber) {
-    //     await this.driver.sleep(3000)
-    //     // await this.driver.findElement(this.firstNameField).clear()
-    //     await this.driver.findElement(this.firstNameField).sendKeys(firstName)
-    //     // await this.driver.findElement(this.lastNameField).clear()
-    //     await this.driver.findElement(this.lastNameField).sendKeys(lastName)
-    //     // await this.driver.findElement(this.companyField).clear()
-    //     await this.driver.findElement(this.companyField).sendKeys(company)
-    //     // await this.driver.findElement(this.addressField).clear()
-    //     await this.driver.findElement(this.addressField).sendKeys(address)
-    //     // await this.driver.findElement(this.addressField1).clear()
-    //     await this.driver.findElement(this.addressField1).sendKeys(address1)
-    //     // await this.driver.findElement(this.addressField2).clear()
-    //     await this.driver.findElement(this.addressField2).sendKeys(address2)
-    //     // await this.driver.findElement(this.cityField).clear()
-    //     await this.driver.findElement(this.cityField).sendKeys(city)
-    //     // await this.driver.findElement(this.postCodeField).clear()
-    //     await this.driver.findElement(this.postCodeField).sendKeys(postCode)
-    //     // await this.driver.findElement(this.phoneNumberField).clear()
-    //     await this.driver.findElement(this.phoneNumberField).sendKeys(phoneNumber)
-    //     await this.driver.findElement(this.countryField).sendKeys(country)
-    //     await this.driver.sleep(5000)
+     async updateShippingProcess(firstName, lastName, company, address, address1, address2, city, postCode, country, phoneNumber) {
+        const fieldset = await this.driver.findElement(this.fieldsetAddressEl)
+        await this.driver.wait(until.elementIsVisible(fieldset), 10000) 
+        await this.driver.sleep(3000)
+        await this.driver.findElement(this.firstNameField).clear()
+        await this.driver.findElement(this.firstNameField).sendKeys(firstName)
+        await this.driver.findElement(this.lastNameField).clear()
+        await this.driver.findElement(this.lastNameField).sendKeys(lastName)
+        await this.driver.findElement(this.companyField).clear()
+        await this.driver.findElement(this.companyField).sendKeys(company)
+        await this.driver.findElement(this.addressField).clear()
+        await this.driver.findElement(this.addressField).sendKeys(address)
+        await this.driver.findElement(this.addressField1).clear()
+        await this.driver.findElement(this.addressField1).sendKeys(address1)
+        await this.driver.findElement(this.addressField2).clear()
+        await this.driver.findElement(this.addressField2).sendKeys(address2)
+        await this.driver.findElement(this.cityField).clear()
+        await this.driver.findElement(this.cityField).sendKeys(city)
+        await this.driver.findElement(this.postCodeField).clear()
+        await this.driver.findElement(this.postCodeField).sendKeys(postCode)
+        await this.driver.findElement(this.phoneNumberField).clear()
+        await this.driver.findElement(this.phoneNumberField).sendKeys(phoneNumber)
+        await this.driver.findElement(this.countryField).sendKeys(country)
+        await this.driver.sleep(5000)
 
-    // }
+    }
 
     /**
 	 * 

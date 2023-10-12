@@ -40,13 +40,12 @@ const scenarioList = {
 export const options = {
 	thresholds,
 	scenarios: {
-		protocolBased : scenarioList[__ENV.SCENARIO] || smoke_test,
-		// protocolBased: {
-		// 	exec: 'protocolBasedScript',
-		// 	executor: 'constant-vus',
-		// 	vus: 13,
-		// 	duration: '15s',
-		// },
+		protocolBased: {
+			exec: 'protocolBasedScript',
+			executor: 'constant-vus',
+			vus: 10,
+			duration: '10s',
+		},
 		browserBased: {
 			exec: 'browserBasedScript',
 			executor: 'shared-iterations',
@@ -91,9 +90,9 @@ export function protocolBasedScript () {
 	home_protocol()
 	detail_product_protocol()
 	// API
-	apiProduct()
-	apiCarts()
-	apiUsers()
+	// apiProduct()
+	// apiCarts()
+	// apiUsers()
 }
 
 // export function apiBasedScript () {

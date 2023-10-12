@@ -184,6 +184,7 @@ describe('FT_005_Checkout Page', function () {
             await checkOutShippingPage.regionInput('Alaska')
             await checkOutShippingPage.fixedShipping()
             await checkOutShippingPage.nextShipping()
+            await driver.sleep(3000)
             const pageTitle = await paymentPage.getPageTitle()
             const addrresDetail = await paymentPage.getAddressDetail()
             expect(pageTitle).to.include('Payment Method')
